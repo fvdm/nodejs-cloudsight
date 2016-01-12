@@ -137,6 +137,7 @@ function imageResponses (token, callback) {
 function pollStatus (token, callback) {
   imageResponses (token, function (err, data) {
     if (err) {
+      err.token = token;
       callback (err);
       return;
     }
