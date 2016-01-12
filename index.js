@@ -29,7 +29,9 @@ function guidGenerator () {
 
     for (i = times || 1; i > 0; i--) {
       str += String (prefix);
-      str += parseInt (((Math.random () + 1) * 0x10000), 10) .toString (16) .substring (1);
+      str += parseInt (((Math.random () + 1) * 0x10000), 10)
+        .toString (16)
+        .substring (1);
     }
 
     return str;
