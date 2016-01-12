@@ -91,11 +91,29 @@ function talk (props, callback) {
 
 
 /**
+ * Get result data for image
+ *
+ * @param {string} token - Image token
+ * @param {function} callback
+ * @returns {void}
+ */
+
+function imageResponses (token, callback) {
+  var options = {
+    method: 'GET',
+    path: '/image_responses/' + token
+  };
+
+  talk (options, callback);
+}
+
+
+/**
  * Check status at preferred interval
  *
  * @param {string} token - Image token
  * @param {function} callback
- * @returns {void} 
+ * @returns {void}
  */
 
 function pollStatus (token, callback) {
@@ -148,24 +166,6 @@ function imageRequests (props, polling, callback) {
 
     callback (null, data);
   });
-}
-
-
-/**
- * Get result data for image
- *
- * @param {string} token - Image token
- * @param {function} callback
- * @returns {void}
- */
-
-function imageResponses (token, callback) {
-  var options = {
-    method: 'GET',
-    path: '/image_responses/' + token
-  };
-
-  talk (options, callback);
 }
 
 
