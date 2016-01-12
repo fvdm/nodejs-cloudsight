@@ -18,8 +18,15 @@ Usage
 var cloudsight = require ('cloudsight') ({
   apikey: 'abc123'
 });
-```
 
+var image = {
+  image: '/path/to/image.jpg',
+  locale: 'en-US'
+};
+
+// Upload image to analyze, report results
+cloudsight.request (image, true, console.log);
+```
 
 
 Installation
@@ -30,12 +37,10 @@ You need a CloudSight account API key with enough credits.
 `npm install cloudsight`
 
 
-Callback
---------
+Methods
+-------
 
-The callback function receives result data and errors. Unless an error occurs the
-data JSON will be parsed to an object. When everything is ok `err` is `null` else
-`err` is an instance of `Error`. It also returns API errors this same way.
+The callback function receives result data and errors.
 
 ```js
 function myCallback (err, data) {
@@ -54,6 +59,70 @@ error message  | description             | additional
 :--------------|:------------------------|:--------------------------
 request failed | A request error occured | `err.error`
 API error      | API error occured       | `err.statusCode` and `err.error`
+
+
+### .request
+**( params, [polling], callback )**
+
+Send an image to the API for analysis.
+
+
+argument | type     | required | default | description
+:--------|:---------|:---------|:--------|:-----------------------
+params   | object   | yes      |         | Image object, see below
+polling  | boolean  | no       | false   | Only callback when analysis is complete
+callback | function | yes      |         | Callback function
+
+
+#### Image object
+
+param            | required | default | description
+:----------------|:---------|:--------|:-------------------------------
+image            | yes      |         | Local path to image, either this or `remote_image_url`
+remote_image_url | yes      |         | URL to image, either this or `image`
+locale           | no       | en-US   | OCR locale for text recognition
+language         | no       | en      | Response data language
+device_id        | no       | _UUID_  | Unique identifier for request, auto generated
+latitude         | no       |         | Image context geo position
+longitude        | no       |         | Image context geo position
+altitude         | no       |         | Image context geo position
+ttl              | no       |         | Analysis deadline in seconds or `max`
+focus_x          | no       |         | Focal point in px
+focus_y          | no       |         | Focal point in px
+
+
+#### Example
+
+```js
+// Describe image
+var image = {
+  image: '/path/to/image.jpg',
+  locale: 'en-US'
+};
+  
+// Upload image
+cloudsight.request (image, console.log);
+
+// Upload image and wait for completion
+cloudsight.request (image, true, console.log);
+```
+
+
+### .response
+**( token, callback )**
+
+Get analysis state or data for an image.
+
+
+argument | type     | required | description
+:--------|:---------|:---------|:---------------------------
+token    | string   | yes      | Image token from `.request`
+callback | function | yes      | Callback function
+
+
+```js
+cloudsight.response ('xyz789', console.log);
+```
 
 
 Unlicense
