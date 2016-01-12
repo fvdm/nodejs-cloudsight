@@ -73,17 +73,9 @@ function talk (props, callback) {
 
     // request error
     if (err) {
-      error = err;
+      error = new Error ('request failed');
       error.statusCode = code;
-      callback (error);
-      return;
-    }
-
-    // http error
-    if (code && code >= 300) {
-      error = new Error ('HTTP error');
-      error.statusCode = code;
-      error.body = data;
+      error.error = err;
       callback (error);
       return;
     }
