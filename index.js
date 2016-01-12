@@ -33,7 +33,7 @@ function guidGenerator () {
     }
 
     return str;
-  };
+  }
 
   return (S4 (2) + S4 (4, '-') + S4 (2));
 }
