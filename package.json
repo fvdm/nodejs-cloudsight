@@ -1,0 +1,38 @@
+{
+  "author": {
+    "name": "Franklin van de Meent",
+    "email": "fr@nkl.in",
+    "url": "https://frankl.in"
+  },
+  "name": "cloudsight",
+  "description": "CloudSight image recognition (unofficial)",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fvdm/nodejs-cloudsight.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fvdm/nodejs-cloudsight/issues"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "httpreq": "0.4.x"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "cloudsight",
+    "image recognition",
+    "ocr",
+    "api",
+    "detection",
+    "recognition"
+  ],
+  "license": "Unlicense"
+}
