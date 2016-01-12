@@ -8,7 +8,6 @@ License:      Unlicense (Public Domain, see LICENSE file)
 */
 
 var httpreq = require ('httpreq');
-var app = {};
 
 var config = {
   apikey: null,
@@ -27,7 +26,7 @@ var config = {
  * @param {string} [props.endpoint=config.endpoint] - API endpoint override
  * @param {number} [props.timeout=config.timeout] - Request timeout override
  * @param {function} callback - Process response
- * @returns {object} app - Module methods
+ * @returns {void}
  */
 
 function talk (props, callback) {
@@ -92,13 +91,92 @@ function talk (props, callback) {
 
 
 /**
+ * Check status at preferred interval
+ *
+ * @param {string} token - Image token
+ * @param {function} callback
+ * @returns {void} 
+ */
+
+function pollStatus (token, callback) {
+  imageResponses (token, function (err, data) {
+    if (err) {
+      callback (err);
+      return;
+    }
+
+    if (data.status === 'not completed') {
+      setTimeout (function () {
+        pollStatus (token, callback);
+      }, 1000);
+    } else {
+      callback (null, data);
+    }
+  });
+}
+
+
+/**
+ * Send an image for processing
+ *
+ * @param {object} props - See README.md
+ * @param {boolean} [polling=false] - Callback only when results are ready
+ * @param {function} callback - Callback response
+ * @returns {void}
+ */
+
+function imageRequests (props, polling, callback) {
+  var options = {
+    method: 'POST',
+    path: '/image_requests',
+    data: props
+  };
+
+  talk (options, function (err, data) {
+    if (err) {
+      callback (err);
+      return;
+    }
+
+    if (polling && data.token) {
+      setTimeout (function () {
+        pollStatus (data.token, callback);
+      }, 4000);
+
+      return;
+    }
+
+    callback (null, data);
+  });
+}
+
+
+/**
+ * Get result data for image
+ *
+ * @param {string} token - Image token
+ * @param {function} callback
+ * @returns {void}
+ */
+
+function imageResponses (token, callback) {
+  var options = {
+    method: 'GET',
+    path: '/image_responses/' + token
+  };
+
+  talk (options, callback);
+}
+
+
+/**
  * Module config and defaults
  *
  * @param {object} conf
  * @param {string} conf.apikey - Account API key
  * @param {string} [conf.endpoint] - Override API endpoint
  * @param {number} [conf.timeout=5000] - Override request timeout
- * @returns {object} app - Module methods
+ * @returns {object} - Module methods
  */
 
 module.exports = function (conf) {
@@ -106,5 +184,10 @@ module.exports = function (conf) {
   config.endpoint = conf.endpoint || 'https://api.cloudsightapi.com';
   config.timeout = conf.timeout || 5000;
 
-  return app;
+  return {
+    image: {
+      requests: imageRequests,
+      responses: imageResponses
+    }
+  };
 };
