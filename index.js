@@ -182,10 +182,11 @@ function imageRequests (props, polling, callback) {
   props.language = props.language || 'en';
   props.device_id = props.device_id || guidGenerator ();
 
-  // image is a file
+  // image is a file, overrides URL
   if (props.image) {
     options.files ['image_request[image]'] = props.image;
     delete props.image;
+    delete props.remote_image_url;
   }
 
   // wrap fieldnames
