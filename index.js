@@ -190,6 +190,16 @@ function imageRequests (props, polling, callback) {
   }
 
   // wrap fieldnames
+  if (props.focus_x) {
+    options.data ['focus[x]'] = props.focus_x;
+    delete props.focus_x;
+  }
+
+  if (props.focus_y) {
+    options.data ['focus[y]'] = props.focus_y;
+    delete props.focus_y;
+  }
+
   for (i = 0; i < keys.length; i++) {
     options.data ['image_request[' + keys [i] + ']'] = props [keys [i]];
   }
