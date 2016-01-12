@@ -15,7 +15,9 @@ Usage
 -----
 
 ```js
-var cloudsight = require ('cloudsight') ('apikey');
+var cloudsight = require ('cloudsight') ({
+  apikey: 'abc123'
+});
 ```
 
 
@@ -23,8 +25,7 @@ var cloudsight = require ('cloudsight') ('apikey');
 Installation
 ------------
 
-You need a Maxmind account ID and license key with enough credits for one of their GeoIP *web*
-services. You can find both [*here*](https://www.maxmind.com/en/my_license_key).
+You need a CloudSight account API key with enough credits.
 
 `npm install cloudsight`
 
@@ -41,7 +42,7 @@ function myCallback (err, data) {
   if (err) {
     console.log (err);
   } else {
-    console.log (data.city.names.en);
+    console.log (data);
   }
 }
 ```
@@ -52,7 +53,7 @@ function myCallback (err, data) {
 error message  | description             | additional
 :--------------|:------------------------|:--------------------------
 request failed | A request error occured | `err.error`
-API error      | API error occured       | `err.code` and `err.error`
+API error      | API error occured       | `err.statusCode` and `err.error`
 
 
 Unlicense
