@@ -17,6 +17,29 @@ var config = {
 
 
 /**
+ * GUID generator
+ *
+ * @returns {string}
+ */
+
+function guidGenerator () {
+  function S4 (times, prefix) {
+    var str = '';
+    var i;
+
+    for (i = times || 1; i > 0; i--) {
+      str += String (prefix);
+      str += parseInt (((Math.random () + 1) * 0x10000), 10) .toString (16) .substring (1);
+    }
+
+    return str;
+  };
+
+  return (S4 (2) + S4 (4, '-') + S4 (2));
+}
+
+
+/**
  * Communication
  *
  * @param {object} props
@@ -147,8 +170,19 @@ function imageRequests (props, polling, callback) {
   var options = {
     method: 'POST',
     path: '/image_requests',
-    data: props
+    data: {}
   };
+
+  var keys = Object.keys (props);
+  var i;
+
+  props.locale = props.locale || 'en-US';
+  props.language = props.language || 'en';
+  props.device_id = props.device_id || guidGenerator ();
+
+  for (i = 0; i < keys.length; i++) {
+    options.data ['image_request[' + keys [i] + ']'] = props [keys [i]];
+  }
 
   talk (options, function (err, data) {
     if (err) {
