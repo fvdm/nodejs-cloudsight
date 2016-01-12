@@ -16,12 +16,12 @@
   },
   "main": "index.js",
   "dependencies": {
-    "httpreq": "0.4.x"
+    "httpreq": "^0.4"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
-    "node": ">=0.8.0"
+    "node": "^0.12"
   },
   "scripts": {
     "test": "node test.js"
