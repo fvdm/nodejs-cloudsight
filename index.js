@@ -185,9 +185,7 @@ module.exports = function (conf) {
   config.timeout = conf.timeout || 5000;
 
   return {
-    image: {
-      requests: imageRequests,
-      responses: imageResponses
-    }
+    request: imageRequests,
+    response: imageResponses
   };
 };
