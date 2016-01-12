@@ -57,6 +57,7 @@ function talk (props, callback) {
     url: config.endpoint + props.path,
     method: props.method || 'GET',
     parameters: props.data || null,
+    files: props.files || null,
     timeout: props.timeout || config.timeout,
     headers: {
       'Accept': 'application/json',
@@ -176,14 +177,23 @@ function imageRequests (props, polling, callback) {
   var keys = Object.keys (props);
   var i;
 
+  // default values
   props.locale = props.locale || 'en-US';
   props.language = props.language || 'en';
   props.device_id = props.device_id || guidGenerator ();
 
+  // image is a file
+  if (props.image) {
+    options.files ['image_request[image]'] = props.image;
+    delete props.image;
+  }
+
+  // wrap fieldnames
   for (i = 0; i < keys.length; i++) {
     options.data ['image_request[' + keys [i] + ']'] = props [keys [i]];
   }
 
+  // send it
   talk (options, function (err, data) {
     if (err) {
       callback (err);
