@@ -62,7 +62,7 @@ function talk (props, callback) {
     headers: {
       'Accept': 'application/json',
       'Authorization': 'CloudSight ' + config.apikey,
-      'User-Agent': 'cloudsight.js (https://github.com/fvdm/nodejs-cloudsight)'
+      'User-Agent': 'cloudsight node/' + process.versions.node + ' (https://github.com/fvdm/nodejs-cloudsight)'
     }
   };
 
