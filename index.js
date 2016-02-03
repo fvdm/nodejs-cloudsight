@@ -166,10 +166,11 @@ function imageRequests (props, polling, callback) {
   var options = {
     method: 'POST',
     path: '/image_requests',
+    files: {},
     data: {}
   };
 
-  var keys = Object.keys (props);
+  var keys;
   var i;
 
   // default values
@@ -194,6 +195,8 @@ function imageRequests (props, polling, callback) {
     options.data ['focus[y]'] = props.focus_y;
     delete props.focus_y;
   }
+
+  keys = Object.keys (props);
 
   for (i = 0; i < keys.length; i++) {
     options.data ['image_request[' + keys [i] + ']'] = props [keys [i]];
