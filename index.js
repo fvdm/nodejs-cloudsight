@@ -170,6 +170,9 @@ function imageRequests (props, polling, callback) {
     data: {}
   };
 
+  var keys;
+  var i;
+
   // default values
   props.locale = props.locale || 'en-US';
   props.language = props.language || 'en';
@@ -193,9 +196,11 @@ function imageRequests (props, polling, callback) {
     delete props.focus_y;
   }
 
-  props.forEach (function (val, key) {
-    options.data ['image_request[' + key + ']'] = val;
-  });
+  keys = Object.keys (props);
+
+  for (i = 0; i < keys.length; i++) {
+    options.data ['image_request[' + keys [i] + ']'] = props [keys [i]];
+  }
 
   // send it
   talk (options, function (err, data) {
