@@ -19,16 +19,21 @@ var config = {
 /**
  * GUID generator
  *
+ * @param parts {number=8} - Number of parts to generate
+ * @param prefix {string=-} - Prefix parts with string
  * @returns {string}
  */
 
 function guidGenerator () {
-  function S4 (times, prefix) {
+  function S4 (parts, prefix) {
     var str = '';
     var i;
 
-    for (i = times || 1; i > 0; i--) {
-      str += String (prefix);
+    parts = parts || 8;
+    prefix = prefix || '-';
+
+    for (i = parts || 1; i > 0; i--) {
+      str += prefix;
       str += parseInt (((Math.random () + 1) * 0x10000), 10)
         .toString (16)
         .substring (1);
