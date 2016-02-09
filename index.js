@@ -66,6 +66,7 @@ function talk (props, callback) {
     parameters: props.data || null,
     files: props.files || null,
     timeout: props.timeout || config.timeout,
+    encodePostParameters: false,
     headers: {
       'Accept': 'application/json',
       'Authorization': 'CloudSight ' + config.apikey,
