@@ -266,7 +266,7 @@ queue.push (function () {
 // send image from url without status polling
 queue.push (function () {
   var image = {
-    image_from_url: 'https://frankl.in/u/test_image.png',
+    remote_image_url: 'https://frankl.in/u/test_image.png',
     locale: 'nl-NL'
   };
 
@@ -283,7 +283,7 @@ queue.push (function () {
 // send image from url with status polling
 queue.push (function () {
   var image = {
-    image_from_url: 'https://frankl.in/u/test_image.png',
+    remote_image_url: 'https://frankl.in/u/test_image.png',
     locale: 'nl-NL'
   };
 
