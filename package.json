@@ -5,7 +5,7 @@
     "url": "https://frankl.in"
   },
   "name": "cloudsight",
-  "description": "CloudSight image recognition (unofficial)",
+  "description": "CloudSight image recognition API (unofficial)",
   "version": "0.1.0",
   "repository": {
     "type": "git",
