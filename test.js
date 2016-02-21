@@ -228,8 +228,9 @@ queue.push (function () {
 
 // Start the tests
 log ('note', 'Running tests...\n');
-log ('note', 'Node.js:  ' + process.versions.node);
-log ('note', 'Module:   ' + pkg.version);
+log ('note', 'API endpoint:  ' + config.endpoint);
+log ('note', 'Node.js:       ' + process.versions.node);
+log ('note', 'Module:        ' + pkg.version);
 console.log ();
 
 queue [0] ();
