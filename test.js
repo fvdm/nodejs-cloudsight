@@ -312,7 +312,7 @@ queue.push (function () {
 
 // Start the tests
 log ('note', 'Running tests...\n');
-log ('note', 'API endpoint:  ' + config.endpoint);
+log ('note', 'API endpoint:  ' + (config.apikey ? 'LIVE' : 'CUSTOM'));
 log ('note', 'Node.js:       ' + process.versions.node);
 log ('note', 'Module:        ' + pkg.version);
 console.log ();
