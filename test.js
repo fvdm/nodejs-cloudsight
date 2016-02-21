@@ -11,11 +11,14 @@ var dir = path.dirname (module.filename);
 var pkg = require (path.join (dir, 'package.json'));
 var app = require (path.join (dir));
 
+var cloudsight;
 var errors = 0;
 var warnings = 0;
 var queue = [];
 var next = 0;
-var cloudsight;
+var cache = {
+  token: null
+};
 
 
 // Setup
@@ -217,12 +220,93 @@ function doTest (err, label, tests) {
   doNext ();
 }
 
-// METHOD
+
+// module basics
 queue.push (function () {
   doTest (null, 'module', [
     ['fail', 'exports', typeof app, 'function'],
     ['interface', cloudsight instanceof Object, true]
   ]);
+});
+
+// upload image without status polling
+queue.push (function () {
+  var image = {
+    image: path.join (dir, 'test_image.png'),
+    locale: 'nl-NL'
+  };
+
+  cloudsight.request (image, false, function (err, data) {
+    cache.token = data && data.token;
+
+    doTest (err, '.request - upload without polling', [
+      ['fail', 'type', data instanceof Object, true],
+      ['warn', 'url', data && typeof data.url, 'string']
+    ]);
+  });
+});
+
+// upload image with status polling
+queue.push (function () {
+  var image = {
+    image: path.join (dir, 'test_image.png'),
+    locale: 'nl-NL'
+  };
+
+  cloudsight.request (image, true, function (err, data) {
+    cache.token = data && data.token;
+
+    doTest (err, '.request - upload with polling', [
+      ['fail', 'type', data instanceof Object, true],
+      ['warn', 'status', data && data.status, 'completed']
+    ]);
+  });
+});
+
+// send image from url without status polling
+queue.push (function () {
+  var image = {
+    image_from_url: 'https://frankl.in/u/test_image.png',
+    locale: 'nl-NL'
+  };
+
+  cloudsight.request (image, false, function (err, data) {
+    cache.token = data && data.token;
+
+    doTest (err, '.request - url without polling', [
+      ['fail', 'type', data instanceof Object, true],
+      ['warn', 'url', data && typeof data.url, 'string']
+    ]);
+  });
+});
+
+// send image from url with status polling
+queue.push (function () {
+  var image = {
+    image_from_url: 'https://frankl.in/u/test_image.png',
+    locale: 'nl-NL'
+  };
+
+  cloudsight.request (image, true, function (err, data) {
+    cache.token = data && data.token;
+
+    doTest (err, '.request - url with polling', [
+      ['fail', 'type', data instanceof Object, true],
+      ['warn', 'status', data && data.status, 'completed']
+    ]);
+  });
+});
+
+// get image status
+queue.push (function () {
+  cloudsight.response (cache.token, function (err, data) {
+    cache.token = data && data.token;
+
+    doTest (err, '.response', [
+      ['fail', 'type', data instanceof Object, true],
+      ['fail', 'token', data && data.token, cache.token]
+    ]);
+  });
 });
 
 
