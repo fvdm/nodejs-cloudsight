@@ -17,7 +17,7 @@ Commit your changes, requirements:
 * Commits not in main code _index.js_ should be prefixed with:
   * `Package:` for _package.json_ edits
   * `Test:` for testing related edits like _test.js_ or _.eslintrc_ or _.travis.yml_
-  * `Readme:` for _README.md_ edits
+  * `Readme:` for _README.md_ or _CONTRIBUTING.md_ edits
 * English only.
 * Stick to the code style.
 * JSdoc the functions.
