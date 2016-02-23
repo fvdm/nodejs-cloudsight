@@ -22,4 +22,4 @@ Commit your changes, requirements:
 * Stick to the code style.
 * JSdoc the functions.
 * Give anonymous functions a name for the error reports.
-* Run `eslint .`
+* Run `npm test` to make sure it all works.
