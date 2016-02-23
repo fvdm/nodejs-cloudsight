@@ -8,7 +8,7 @@ Unofficial Node.js module for the CloudSight image recognition API.
 * [Node.js](https://nodejs.org/)
 * [CloudSight](https://cloudsightapi.com/)
 * [API documentation](http://cloudsightapi.com/docs)
-* [Development](https://github.com/fvdm/nodejs-cloudsight/wiki)
+* [Development](https://github.com/fvdm/nodejs-cloudsight/blob/develop/CONTRIBUTING.md)
 
 
 Usage
