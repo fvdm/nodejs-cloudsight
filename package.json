@@ -6,7 +6,7 @@
   },
   "name": "cloudsight",
   "description": "CloudSight image recognition API (unofficial)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/fvdm/nodejs-cloudsight.git"
