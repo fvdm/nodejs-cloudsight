@@ -19,7 +19,7 @@
     "httpreq": "fvdm/node-httpreq#OptionalEncode"
   },
   "devDependencies": {
-    "eslint": "1.x"
+    "eslint": "2.x"
   },
   "optionalDependencies": {},
   "engines": {
