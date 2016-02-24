@@ -25,24 +25,13 @@ var config = {
  */
 
 function guidGenerator () {
-  function S4 (parts, prefix) {
-    var str = '';
-    var i;
-
-    parts = parts || 8;
-    prefix = prefix || '-';
-
-    for (i = parts || 1; i > 0; i--) {
-      str += prefix;
-      str += parseInt (((Math.random () + 1) * 0x10000), 10)
-        .toString (16)
-        .substring (1);
-    }
-
-    return str;
+  function s4 () {
+    return Math.floor ((1 + Math.random ()) * 0x10000)
+      .toString (16)
+      .substring (1);
   }
 
-  return (S4 (2) + S4 (4, '-') + S4 (2));
+  return s4 () + s4 () + '-' + s4 () + '-' + s4 () + '-' + s4 () + '-' + s4 () + s4 () + s4 ();
 }
 
 
