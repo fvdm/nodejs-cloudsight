@@ -26,7 +26,7 @@
     "node": ">=0.12"
   },
   "scripts": {
-    "test": "node test.js ; eslint ."
+    "test": "eslint . && node test.js"
   },
   "keywords": [
     "cloudsight",
