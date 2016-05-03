@@ -46,9 +46,10 @@ The callback function receives result data and errors.
 function myCallback (err, data) {
   if (err) {
     console.log (err);
-  } else {
-    console.log (data);
+    return;
   }
+
+  console.log (data);
 }
 ```
 
@@ -157,6 +158,4 @@ For more information, please refer to <http://unlicense.org/>
 Author
 ------
 
-Franklin van de Meent
-| [Website](https://frankl.in/)
-| [Github](https://github.com/fvdm)
+[Franklin van de Meent](https://frankl.in/)
