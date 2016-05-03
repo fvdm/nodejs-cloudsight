@@ -36,6 +36,53 @@ function guidGenerator () {
 
 
 /**
+ * Process API response
+ *
+ * @callback callback
+ * @param err {Error, null} - Error
+ * @param res {object} - Response data
+ * @param callback {function} - `function (err, data) {}`
+ */
+
+function processResponse (err, res, callback) {
+  var data = res && res.body || '';
+  var code = res && res.statusCode || null;
+  var error = null;
+
+  // request error
+  if (err) {
+    error = new Error ('request failed');
+    error.statusCode = code;
+    error.error = err;
+    callback (error);
+    return;
+  }
+
+  // parse body
+  try {
+    data = JSON.parse (data);
+  } catch (e) {
+    error = e;
+    error.statusCode = code;
+    error.body = data;
+    callback (error);
+    return;
+  }
+
+  // API error
+  if (data.error) {
+    error = new Error ('API error');
+    error.statusCode = code;
+    error.error = data.error;
+    callback (error);
+    return;
+  }
+
+  // all good
+  callback (null, data);
+}
+
+/**
  * Communication
  *
  * @param {object} props
@@ -64,41 +111,7 @@ function talk (props, callback) {
   };
 
   httpreq.doRequest (options, function (err, res) {
-    var data = res && res.body || '';
-    var code = res && res.statusCode || null;
-    var error = null;
-
-    // request error
-    if (err) {
-      error = new Error ('request failed');
-      error.statusCode = code;
-      error.error = err;
-      callback (error);
-      return;
-    }
-
-    // parse body
-    try {
-      data = JSON.parse (data);
-    } catch (e) {
-      error = e;
-      error.statusCode = code;
-      error.body = data;
-      callback (error);
-      return;
-    }
-
-    // API error
-    if (data.error) {
-      error = new Error ('API error');
-      error.statusCode = code;
-      error.error = data.error;
-      callback (error);
-      return;
-    }
-
-    // all good
-    callback (null, data);
+    processResponse (err, res, callback);
   });
 }
 
