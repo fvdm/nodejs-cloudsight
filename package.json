@@ -16,7 +16,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "httpreq": "fvdm/node-httpreq#OptionalEncode"
+    "httpreq": "^0.4.22"
   },
   "devDependencies": {
     "dotest": "^1.2.0",
