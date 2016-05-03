@@ -36,6 +36,8 @@ dotest.add ('Module', function () {
   dotest.test ()
     .isFunction ('fail', 'exports', app)
     .isObject ('fail', 'interface', cloudsight)
+    .isFunction ('fail', '.request', cloudsight && cloudsight.request)
+    .isFunction ('fail', '.response', cloudsight && cloudsight.response)
     .done ();
 });
 
