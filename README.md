@@ -4,6 +4,7 @@ cloudsight
 Unofficial Node.js module for the CloudSight image recognition API.
 
 [![Build Status](https://travis-ci.org/fvdm/nodejs-cloudsight.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-cloudsight)
+[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-cloudsight.svg)](https://gemnasium.com/github.com/fvdm/nodejs-cloudsight)
 
 * [Node.js](https://nodejs.org/)
 * [CloudSight](https://cloudsightapi.com/)
