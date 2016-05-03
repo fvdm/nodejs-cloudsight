@@ -31,7 +31,8 @@ function guidGenerator () {
       .substring (1);
   }
 
-  return s4 () + s4 () + '-' + s4 () + '-' + s4 () + '-' + s4 () + '-' + s4 () + s4 () + s4 ();
+  return s4 () + s4 () + '-' + s4 () + '-' + s4 () + '-'
+    + s4 () + '-' + s4 () + s4 () + s4 ();
 }
 
 
@@ -82,6 +83,7 @@ function processResponse (err, res, callback) {
   callback (null, data);
 }
 
+
 /**
  * Communication
  *
@@ -106,7 +108,8 @@ function talk (props, callback) {
     headers: {
       'Accept': 'application/json',
       'Authorization': 'CloudSight ' + config.apikey,
-      'User-Agent': 'cloudsight node/' + process.versions.node + ' (https://github.com/fvdm/nodejs-cloudsight)'
+      'User-Agent': 'cloudsight node/' + process.versions.node
+        + ' (https://github.com/fvdm/nodejs-cloudsight)'
     }
   };
 
@@ -165,7 +168,7 @@ function pollStatus (token, callback) {
  * Send an image for processing
  *
  * @param {object} props - See README.md
- * @param {boolean} [polling=false] - Callback only when results are ready
+ * @param {boolean} [polling=false] - Callback only when ready
  * @param {function} callback - Callback response
  * @returns {void}
  */
