@@ -11,8 +11,8 @@ var httpreq = require ('httpreq');
 
 var config = {
   apikey: null,
-  endpoint: null,
-  timeout: null
+  endpoint: 'https://api.cloudsightapi.com',
+  timeout: 5000
 };
 
 
@@ -40,9 +40,9 @@ function guidGenerator () {
  * Process API response
  *
  * @callback callback
- * @param err {Error, null} - Error
- * @param res {object} - Response data
- * @param callback {function} - `function (err, data) {}`
+ * @param {Error, null} err - Error
+ * @param {object} res - Response data
+ * @param {function} callback - `function (err, data) {}`
  */
 
 function processResponse (err, res, callback) {
@@ -88,11 +88,11 @@ function processResponse (err, res, callback) {
  * Communication
  *
  * @param {object} props
- * @param {string} [props.method=GET] - GET or POST
  * @param {string) props.path - i.e. /image_requests/token
+ * @param {string} [props.method=GET] - GET or POST
  * @param {object} [props.data] - Data fields to send
- * @param {string} [props.endpoint=config.endpoint] - API endpoint override
- * @param {number} [props.timeout=config.timeout] - Request timeout override
+ * @param {string} [props.endpoint = config.endpoint] - API endpoint override
+ * @param {number} [props.timeout = config.timeout] - Request timeout override
  * @param {function} callback - Process response
  * @returns {void}
  */
@@ -243,10 +243,10 @@ function imageRequests (props, polling, callback) {
  * @returns {object} - Module methods
  */
 
-module.exports = function (conf) {
-  config.apikey = conf.apikey || null;
-  config.endpoint = conf.endpoint || 'https://api.cloudsightapi.com';
-  config.timeout = conf.timeout || 5000;
+module.exports = function (set) {
+  config.apikey = set.apikey || null;
+  config.endpoint = set.endpoint || config.endpoint;
+  config.timeout = set.timeout || config.timeout;
 
   return {
     request: imageRequests,
