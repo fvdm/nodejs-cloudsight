@@ -22,7 +22,6 @@
     "dotest": "^1.9.1",
     "eslint": "^2.9.0"
   },
-  "optionalDependencies": {},
   "engines": {
     "node": ">=0.12"
   },
@@ -32,6 +31,7 @@
   "keywords": [
     "cloudsight",
     "image recognition",
+    "image",
     "vision",
     "ocr",
     "api",
