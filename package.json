@@ -15,6 +15,9 @@
     "url": "https://github.com/fvdm/nodejs-cloudsight/issues"
   },
   "main": "index.js",
+  "files": [
+    "CHANGELOG.md"
+  ],
   "dependencies": {
     "httpreq": "^0.4.22"
   },
