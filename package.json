@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "dotest": "^1.12.0",
-    "eslint": "^2.10.2"
+    "eslint": "^3.0.0"
   },
   "engines": {
     "node": ">=0.12"
