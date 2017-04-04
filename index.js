@@ -11,7 +11,7 @@ var httpreq = require ('httpreq');
 
 var config = {
   apikey: null,
-  endpoint: 'https://api.cloudsightapi.com',
+  endpoint: 'https://api.cloudsight.ai',
   timeout: 5000
 };
 
