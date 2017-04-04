@@ -1,3 +1,34 @@
+#### 1.1.2 (2017-4-4)
+
+##### Chores
+
+* **package:**
+  * Update deps versions ([482b05cb](https://github.com/fvdm/nodejs-cloudsight/commit/482b05cb5fe0a5c94062ca0ac5648da6179079ea))
+  * Update dotest dev dep ([12a6e252](https://github.com/fvdm/nodejs-cloudsight/commit/12a6e2523feec9e231158d0e921896a15c9b103b))
+  * Update dev deps ([958f3261](https://github.com/fvdm/nodejs-cloudsight/commit/958f3261f6137bc50d1beea7aeb7c090b0a08263))
+  * update dotest to version 1.15.1 ([d4e78268](https://github.com/fvdm/nodejs-cloudsight/commit/d4e7826848b5fe0626dda4a9d1aa44f9e71b6371))
+  * Replaced test runner and dev deps by dotest ([77510ae4](https://github.com/fvdm/nodejs-cloudsight/commit/77510ae4befd8bf0ea861939b9bb0e44fc952fb3))
+  * update eslint to version 3.0.0 ([647dc0a7](https://github.com/fvdm/nodejs-cloudsight/commit/647dc0a7d0783ae67497e41e9e95fc57c4cb1c95))
+* **develop:** Added bitHound config ([7d59692a](https://github.com/fvdm/nodejs-cloudsight/commit/7d59692a56cc79d84b6c32fcc1d512d2d2229a0f))
+
+##### Bug Fixes
+
+* **main:** Update endpoint to new .ai URL ([1856edee](https://github.com/fvdm/nodejs-cloudsight/commit/1856edee0f9a79783f166cbd3912a97362a79e0b))
+* **request:** Polling is optional ([e2784835](https://github.com/fvdm/nodejs-cloudsight/commit/e2784835f5bc4b1391ec1f6f24b9bcf7d34291f5))
+
+##### Refactors
+
+* **package:**
+  * Minimum supported node v4.0 ([54d17732](https://github.com/fvdm/nodejs-cloudsight/commit/54d17732d4cd7647686ad384b510b28bc4b1e9ab))
+  * Include CHANGELOG.md in package ([ba5a7c96](https://github.com/fvdm/nodejs-cloudsight/commit/ba5a7c96d7dd97e3f6999be48b7b0672c541d6f8))
+
+##### Tests
+
+* **config:**
+  * Travis CI update node versions ([ed300ca0](https://github.com/fvdm/nodejs-cloudsight/commit/ed300ca003e6227e5954aa500a46de448df1007a))
+  * Use dynamic node versions on Travis CI ([c58987e7](https://github.com/fvdm/nodejs-cloudsight/commit/c58987e7843eccf0add533ae4569ef777ea445c1))
+* **lint:** Update eslint to ES6 ([17639aad](https://github.com/fvdm/nodejs-cloudsight/commit/17639aad3e0691eba92382cf739188953a934dbb))
+
 #### 1.1.1 (2016-5-27)
 
 ##### Chores
