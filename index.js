@@ -184,6 +184,11 @@ function imageRequests (props, polling, callback) {
   var keys;
   var i;
 
+  if (typeof polling === 'function') {
+    callback = polling;
+    polling = false;
+  }
+
   // default values
   props.locale = props.locale || 'en-US';
   props.language = props.language || 'en';
