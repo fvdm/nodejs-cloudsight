@@ -19,9 +19,7 @@ var config = {
 /**
  * GUID generator
  *
- * @param parts {number=8} - Number of parts to generate
- * @param prefix {string=-} - Prefix parts with string
- * @returns {string}
+ * @return  {string}
  */
 
 function guidGenerator () {
@@ -40,9 +38,9 @@ function guidGenerator () {
  * Process API response
  *
  * @callback callback
- * @param {Error, null} err - Error
- * @param {object} res - Response data
- * @param {function} callback - `function (err, data) {}`
+ * @param  {Error|null}  err       Error
+ * @param  {object}      res       Response data
+ * @param  {function}    callback  `(err, data)`
  */
 
 function processResponse (err, res, callback) {
@@ -87,14 +85,14 @@ function processResponse (err, res, callback) {
 /**
  * Communication
  *
- * @param {object} props
- * @param {string) props.path - i.e. /image_requests/token
- * @param {string} [props.method=GET] - GET or POST
- * @param {object} [props.data] - Data fields to send
- * @param {string} [props.endpoint = config.endpoint] - API endpoint override
- * @param {number} [props.timeout = config.timeout] - Request timeout override
- * @param {function} callback - Process response
- * @returns {void}
+ * @param   {object}    props
+ * @param   {string}    props.path            i.e. /image_requests/token
+ * @param   {string}    [props.method=GET]    GET or POST
+ * @param   {object}    [props.data]          Data fields to send
+ * @param   {string}    [props.endpoint]      API endpoint override
+ * @param   {number}    [props.timeout=5000]  Request timeout override
+ * @param   {function}  callback              Process response
+ * @return  {void}
  */
 
 function talk (props, callback) {
@@ -122,9 +120,9 @@ function talk (props, callback) {
 /**
  * Get result data for image
  *
- * @param {string} token - Image token
- * @param {function} callback
- * @returns {void}
+ * @param   {string}    token     Image token
+ * @param   {function}  callback
+ * @return  {void}
  */
 
 function imageResponses (token, callback) {
@@ -140,9 +138,9 @@ function imageResponses (token, callback) {
 /**
  * Check status at preferred interval
  *
- * @param {string} token - Image token
- * @param {function} callback
- * @returns {void}
+ * @param   {string}    token     Image token
+ * @param   {function}  callback
+ * @return  {void}
  */
 
 function pollStatus (token, callback) {
@@ -167,10 +165,10 @@ function pollStatus (token, callback) {
 /**
  * Send an image for processing
  *
- * @param {object} props - See README.md
- * @param {boolean} [polling=false] - Callback only when ready
- * @param {function} callback - Callback response
- * @returns {void}
+ * @param   {object}    props            See README.md
+ * @param   {boolean}   [polling=false]  Callback only when ready
+ * @param   {function}  callback         Callback response
+ * @return  {void}
  */
 
 function imageRequests (props, polling, callback) {
@@ -241,11 +239,11 @@ function imageRequests (props, polling, callback) {
 /**
  * Module config and defaults
  *
- * @param {object} conf
- * @param {string} conf.apikey - Account API key
- * @param {string} [conf.endpoint] - Override API endpoint
- * @param {number} [conf.timeout=5000] - Override request timeout
- * @returns {object} - Module methods
+ * @param   {object}  conf
+ * @param   {string}  conf.apikey          Account API key
+ * @param   {string}  [conf.endpoint]      Override API endpoint
+ * @param   {number}  [conf.timeout=5000]  Override request timeout
+ * @return  {object}                       Module methods
  */
 
 module.exports = function (set) {
