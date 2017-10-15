@@ -1,6 +1,8 @@
 cloudsight
 ==========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-cloudsight.svg)](https://greenkeeper.io/)
+
 Unofficial Node.js module for the CloudSight image recognition API.
 
 [![Changelog](https://img.shields.io/npm/v/cloudsight.svg?maxAge=3600)](https://github.com/fvdm/nodejs-cloudsight/blob/master/CHANGELOG.md)
