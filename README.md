@@ -1,13 +1,12 @@
 cloudsight
 ==========
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-cloudsight.svg)](https://greenkeeper.io/)
-
 Unofficial Node.js module for the CloudSight image recognition API.
 
 [![Changelog](https://img.shields.io/npm/v/cloudsight.svg?maxAge=3600)](https://github.com/fvdm/nodejs-cloudsight/blob/master/CHANGELOG.md)
 [![Build Status](https://travis-ci.org/fvdm/nodejs-cloudsight.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-cloudsight)
 [![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-cloudsight.svg)](https://gemnasium.com/github.com/fvdm/nodejs-cloudsight#runtime-dependencies)
+[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-cloudsight.svg)](https://greenkeeper.io/)
 
 * [Node.js](https://nodejs.org/)
 * [CloudSight](https://cloudsightapi.com/)
