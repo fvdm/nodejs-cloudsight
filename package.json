@@ -19,7 +19,7 @@
     "CHANGELOG.md"
   ],
   "dependencies": {
-    "httpreq": "^0.4.23"
+    "httpreq": "^0.4.24"
   },
   "devDependencies": {
     "dotest": "^2.1.0"
