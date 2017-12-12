@@ -1,3 +1,20 @@
+#### 1.1.3 (2017-12-12)
+
+##### Chores
+
+* **package:**
+  * Update httpreq dependency ([fa9d777e](https://github.com/fvdm/nodejs-cloudsight/commit/fa9d777e95cdcfc49be612fa8bc0ff1db04bae95))
+  * Reduce dev deps to dotest ([d2c9a436](https://github.com/fvdm/nodejs-cloudsight/commit/d2c9a436bf8c07c62ad186e82d74634cb7d22e05))
+  * update eslint to version 4.1.0 ([09017181](https://github.com/fvdm/nodejs-cloudsight/commit/090171810b9ee854192829146c8d946104e57cf4))
+
+##### Code Style Changes
+
+* **main:** Rewrite JSDoc comments ([8fdc2d1e](https://github.com/fvdm/nodejs-cloudsight/commit/8fdc2d1ea69df283bf6502a21914e1d82821ca49))
+
+##### Tests
+
+* **config:** Update Travis CI node versions ([4176cc7b](https://github.com/fvdm/nodejs-cloudsight/commit/4176cc7b561a0eb662ae278725b6c052f01f1d77))
+
 #### 1.1.2 (2017-4-4)
 
 ##### Chores
